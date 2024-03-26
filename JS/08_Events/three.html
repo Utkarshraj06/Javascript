@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur Javascript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const defaulttext='chai aur Javascript';
+    let checktxt=false;
+    const sayDate = function (str) {
+        let changetxt = document.querySelector('h1');
+        if(checktxt){
+            changetxt.innerHTML=defaulttext;
+        }
+        else{
+            changetxt.innerHTML = `${str} ${new Date()} `;
+        }
+        checktxt=!checktxt;
+    }
+    let intervalId;
+    document.querySelector('#start').addEventListener('click', function (e) {
+        console.log(e.target.innerHTML);
+        intervalId = setInterval(sayDate, 1000,'hii');
+    });
+    document.querySelector('#stop').addEventListener('click', function () {
+        clearInterval(intervalId);
+        let changetxt = document.querySelector('h1');
+        changetxt.innerHTML=defaulttext;
+        checktxt=false;
+    });
+</script>
+</html>
